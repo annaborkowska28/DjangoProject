@@ -1,0 +1,17 @@
+# Baza danych
+db.sqlite3
+
+# Pliki tymczasowe
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Konfiguracja IDE
+.vscode/
+
+# Zależności Poetry
+poetry.lock
+
+# Pliki testowe 
+tests/
