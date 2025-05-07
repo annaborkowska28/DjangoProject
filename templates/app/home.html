@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-</head>
-<body>
+{% extends 'app/base.html' %}
+
+{% block content %}
     <h1>Articles</h1>
+    <a href="{% url 'create_article' %}">Create article</a>
+
+    {% if articles %}
     <ul>
         {%for article in articles %}
-            <li>{{article.title}} with {{article.word_count}} words. </li>
+            <li><a href="{% url 'update_article' article.id %}">{{article.title}}</a> with {{article.word_count|default:0|floatformat:0 }} word{{ article.word_count | pluralize }}. Created at {{article.created_at | date:"jS F Y"  }} </li>
         {% endfor %}
     </ul>
-    
-</body>
-</html>
+
+    {% else %}
+        <p>You have no articles</p>
+    {% endif %}
+{% endblock content %}
